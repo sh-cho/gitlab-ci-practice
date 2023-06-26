@@ -1,0 +1,30 @@
+services:
+  gitlab-web:
+    image: 'gitlab/gitlab-ce:latest'
+    container_name: gitlab-ce
+    restart: always
+    hostname: 'gitlab-local'
+    environment:
+      TZ: 'Asia/Seoul'
+      GITLAB_ROOT_EMAIL: 'root@local'
+      GITLAB_ROOT_PASSWORD: 'vincevince'
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost:4080'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+    ports:
+      - '4080:4080'
+      - '2224:22'
+    volumes:
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'
+
+  gitlab-runner-1:
+    container_name: gitlab-runner-1
+    image: 'gitlab/gitlab-runner:latest'
+    hostname: 'gitlab-runner-1'
+    restart: always
+    volumes:
+    - '$GITLAB_HOME/gitlab-runner/config:/etc/gitlab-runner'
+    - '/var/run/docker.sock:/var/run/docker.sock'
