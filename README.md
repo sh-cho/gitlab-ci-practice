@@ -1,5 +1,11 @@
 # gitlab-ci-practice
 
+Use Gitlab CI as CI/CD for GitHub repo
+
+> **Warning**
+>
+> Unfortunately, "Using GitLab CI/CD with a GitHub repository"[^2] is for PREMIUM only. So, this repo is not working now 😞
+
 ## Install
 
 ```sh
@@ -70,7 +76,19 @@ ngrok http --domain={your_domain}.ngrok-free.app 4080
 ```
 5. Run ngrok to receive webhook from GitHub
 
-6. Add ngrok domain to GitHub webhook url
+6. Configure allowed import sources[^1]
+
+7. Setup GitLab CI/CD for external repo[^2]
+
+After that, on github repo, add ngrok domain as webhook url
+
+8. Add `.gitlab-ci.yml` to your repo
+
+Note: only `yml` is working (not yaml)
 
 ## Reference
 - https://docs.gitlab.com/ee/install/docker.html#install-gitlab-using-docker-compose
+
+
+[^1]: https://docs.gitlab.com/ee/user/admin_area/settings/visibility_and_access_controls.html#configure-allowed-import-sources
+[^2]: https://docs.gitlab.com/ee/ci/ci_cd_for_external_repos/github_integration.html
