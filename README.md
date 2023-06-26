@@ -54,6 +54,9 @@ Runner registered successfully. Feel free to start it, but if it's running alrea
  
 Configuration (with the authentication token) was saved in "/etc/gitlab-runner/config.toml"
 ```
+
+![image](https://github.com/sh-cho/gitlab-ci-practice/assets/11611397/cc344eff-d164-423e-90e6-5f11c662e04e)
+
 Enter runner options and done :)
 
 ```sh
